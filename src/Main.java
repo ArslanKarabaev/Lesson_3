@@ -18,16 +18,17 @@ public class Main {
 
         int count = 0;
         float res = 0;
+        boolean firstNegativeNum = false;
         for (float i : num) {
-            if (i < 0) {
-                for (float j : num) {
-                    if (j > 0) {
-                        res += j;
-                        count++;
-                    }
-                }
-            } else continue;
-        break;}
+            if (!firstNegativeNum && i < 0) {
+                firstNegativeNum = true;
+                continue;
+            }
+            if (firstNegativeNum && i > 0) {
+                res += i;
+                count++;
+            }
+        }
         System.out.println("среднее арифметическое положительных чисел = " + res + " / " + count + " = " + res / count);
 
         // дз на сообразительность
